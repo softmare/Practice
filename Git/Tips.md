@@ -1,23 +1,35 @@
 ### 깃 메뉴얼 참조 방법
+```
 $git help <command> 
+```
 ex) git help branch
 
 ### 깃 branch를 만들고 해당 브랜치로 바로 이동하는 법
-
+```
 $git switch -c <new branch name>
+```
 
 ### 로컬 branch를 원격 repo에 등록하는 방법
 ```
 $git push <remote repo name> <Branch Name>
 ```
 ### 로컬 branch가 추적할 원격 repo를 설정하는 방법
-
 ```
 $git branch --set-upstream-to=<remote repo name>/<remote branch name>
 ```
 또는 브랜치를 푸시할 때 다음과 같이 -u 옵션을 붙여서 부시한다.
 ```
 $git push <remote repo name> -u <branch name>
+```
+### 브랜치의 이름 변경하기
+```
+$git switch <target branch>
+$git branch -m <newname>
+```
+원격 브랜치의 이름을 변경하기 위해서는 새로운 이름의 브랜치를 푸시하고 기존 이름을 삭제한다.
+```
+$git push <remeto repo name> <new branch name>
+$git push <remote repo name> --delete <old branch name>
 ```
 
 ### 이전 커밋으로 돌아가기
