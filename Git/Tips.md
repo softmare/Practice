@@ -54,3 +54,22 @@ $git config --global user.name "Taehyeng Kim"
 [user]
     name = Taehyeong Kim
 ```
+
+### 레퍼런스 충돌 에러가 발생하는 경우
+
+원인은 정확이 모르겠지만 local reference 와 remote reference 의 차이가 발생하여 push, pull 등의 명령어를 입력할 시 다음과 같은 에러가 발생할 경우가 있다.
+
+```
+$git push origin hotfix
+error: update_ref failed for ref 'refs/remotes/origin/hotfix': cannot lock ref 'refs/remotes/origin/hotfix': 'refs/remotes/origin/hotfix/plaintext' exists; cannot create 'refs/remotes/origin/hotfix'
+```
+이 때 다음과 같은 명령어로 로컬브랜치에만 존재하는 죽은 가지를 쳐낼 수 있다.
+```
+$git remote prune origin
+Pruning origin
+URL: https://github.com/(repoAddress)
+ * [pruned] origin/oldBranch
+ * [pruned] origin/trashBranch
+ ...
+```
+
