@@ -42,6 +42,13 @@ ex) git reset HEAD~1
 - --soft reset은 작업기록(workTree)과 파일 추가기록(index) 도 그대로 남아있다.
 - --hard reset은 작업기록과 파일 추가기록 모두 삭제하며 대상 커밋의 상태로 변한다.
 
+### 마지막 HEAD 위치로 옮기기
+```
+$git checkout -
+$git switch -
+```  
+checkout, switch의 차이는 다음과 같다.
+- switch 는 브랜치만을 이동할 수 있으나 checkout은 특정커밋위치를 오갈 수 있다.
 
 ### 깃 사용자 설정
 

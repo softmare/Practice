@@ -36,4 +36,5 @@ $git push <remote name> --tags
 ```
 $git checkout tags/<tagName>
 ```
+tags/ 부분은 생략해도 좋다.
 
