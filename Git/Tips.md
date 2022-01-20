@@ -80,3 +80,20 @@ URL: https://github.com/(repoAddress)
  ...
 ```
 
+### 변경사항을 저장하고 불러오기
+깃의 기능중에는 서로 다른 커밋의 다른 점을 비교하고 파일로 저장하거나 불러올 수 있도록 하는 기능이 있다.
+
+```
+$git diff <commit to compare>
+```
+
+위 명령어를 사용하면 현재 staged 된 상태를 기준으로 비교대상 커밋과 다른점을 볼 수 있다.
+
+단순히 보는 것 뿐만 아니라 파일로 저장했다가 적용시킬 수도 있다.
+
+```
+$git diff <commit to compare> > file.diff
+...
+$git apply file.diff
+```
+apply 명령어를 사용하면 diff의 출력물을 저장한 파일을 읽어와 현재 HEAD 에 적용시킨다. 
