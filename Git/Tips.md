@@ -54,3 +54,18 @@ $git config --global user.name "Taehyeng Kim"
 [user]
     name = Taehyeong Kim
 ```
+
+- 파일을 직접 수정하고 싶을 경우 다음과 같은 명령어로 설정파일을 열 수도 있다.
+
+```
+$git config --global -e
+```
+
+### gitignore 설정이 반영되지 않는 경우
+이미 repository에 추가된 파일은 새로 .gitignore에 추가되더라도 설정이 적용되지 않는다. 이때는 git의 cache를 지우고 WorkTree(프로젝트)를 새로 업데이트 반영해 주어야 한다.
+
+```
+$git rm -r -cached .
+$git add .
+```
+
