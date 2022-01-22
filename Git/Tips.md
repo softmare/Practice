@@ -62,6 +62,20 @@ $git config --global user.name "Taehyeng Kim"
     name = Taehyeong Kim
 ```
 
+- 파일을 직접 수정하고 싶을 경우 다음과 같은 명령어로 설정파일을 열 수도 있다.
+
+```
+$git config --global -e
+```
+
+### gitignore 설정이 반영되지 않는 경우
+이미 repository에 추가된 파일은 새로 .gitignore에 추가되더라도 설정이 적용되지 않는다. 이때는 git의 cache를 지우고 WorkTree(프로젝트)를 새로 업데이트 반영해 주어야 한다.
+
+```
+$git rm -r --cached .
+$git add .
+```
+
 ### 레퍼런스 충돌 에러가 발생하는 경우
 
 원인은 정확이 모르겠지만 local reference 와 remote reference 의 차이가 발생하여 push, pull 등의 명령어를 입력할 시 다음과 같은 에러가 발생할 경우가 있다.
@@ -97,3 +111,8 @@ $git diff <commit to compare> > file.diff
 $git apply file.diff
 ```
 apply 명령어를 사용하면 diff의 출력물을 저장한 파일을 읽어와 현재 HEAD 에 적용시킨다. 
+
+
+### 깃은 subDirectory 에서의 gitignore 도 잘 인식한다.
+깃의 내부에 다른 깃 프로젝트가 있더라도 해당 파일을 잘 인식한다.
+혹시 인식하지 못할 경우엔 깃 캐시 초기화 명령을 사용하면 잘 적용된다.
