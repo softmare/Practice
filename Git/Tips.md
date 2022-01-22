@@ -42,6 +42,13 @@ ex) git reset HEAD~1
 - --soft reset은 작업기록(workTree)과 파일 추가기록(index) 도 그대로 남아있다.
 - --hard reset은 작업기록과 파일 추가기록 모두 삭제하며 대상 커밋의 상태로 변한다.
 
+### 마지막 HEAD 위치로 옮기기
+```
+$git checkout -
+$git switch -
+```  
+checkout, switch의 차이는 다음과 같다.
+- switch 는 브랜치만을 이동할 수 있으나 checkout은 특정커밋위치를 오갈 수 있다.
 
 ### 깃 사용자 설정
 
@@ -69,3 +76,38 @@ $git rm -r -cached .
 $git add .
 ```
 
+### 레퍼런스 충돌 에러가 발생하는 경우
+
+원인은 정확이 모르겠지만 local reference 와 remote reference 의 차이가 발생하여 push, pull 등의 명령어를 입력할 시 다음과 같은 에러가 발생할 경우가 있다.
+
+```
+$git push origin hotfix
+error: update_ref failed for ref 'refs/remotes/origin/hotfix': cannot lock ref 'refs/remotes/origin/hotfix': 'refs/remotes/origin/hotfix/plaintext' exists; cannot create 'refs/remotes/origin/hotfix'
+```
+이 때 다음과 같은 명령어로 로컬브랜치에만 존재하는 죽은 가지를 쳐낼 수 있다.
+```
+$git remote prune origin
+Pruning origin
+URL: https://github.com/(repoAddress)
+ * [pruned] origin/oldBranch
+ * [pruned] origin/trashBranch
+ ...
+```
+
+### 변경사항을 저장하고 불러오기
+깃의 기능중에는 서로 다른 커밋의 다른 점을 비교하고 파일로 저장하거나 불러올 수 있도록 하는 기능이 있다.
+
+```
+$git diff <commit to compare>
+```
+
+위 명령어를 사용하면 현재 staged 된 상태를 기준으로 비교대상 커밋과 다른점을 볼 수 있다.
+
+단순히 보는 것 뿐만 아니라 파일로 저장했다가 적용시킬 수도 있다.
+
+```
+$git diff <commit to compare> > file.diff
+...
+$git apply file.diff
+```
+apply 명령어를 사용하면 diff의 출력물을 저장한 파일을 읽어와 현재 HEAD 에 적용시킨다. 
