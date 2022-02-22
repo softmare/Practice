@@ -43,6 +43,12 @@ $git config --global user.name "Taehyeng Kim"
 ```
 $git config --global -e
 ```
+### git user을 바꾸어도 다른 user 이름이 나오며 인증 거부가 되는 경우.
+ 이전 유저의 credencial manager 기록이 그대로 남아있기 때문에 발생하는 문제일 수 있다.
+ 이 문제에 해당 하는 경우 Window10은 다음과 같이 해결 가능하다.
+
+ - 제어판 -> 자격 증명 관리자 -> Windows 자격증명 -> git:https://github.com 의 자격증명을 삭제한다.
+ - 다시 push 명령을 사용하고 웹 브라우저를 통해 자격증명을 등록한다.
 
 ### gitignore 설정이 반영되지 않는 경우
 이미 repository에 추가된 파일은 새로 .gitignore에 추가되더라도 설정이 적용되지 않는다. 이때는 git의 cache를 지우고 WorkTree(프로젝트)를 새로 업데이트 반영해 주어야 한다.
